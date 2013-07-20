@@ -50,10 +50,11 @@ get '/' do
 end
 
 post '/new' do
-    link = Link.new(:link => 'www.hackreactor.com', :short_url => 'www.hack.1')
+    path = params[:url]
+    link = Link.new(:link => path)
     link.save
-    Link.find_by_link('www.hackreactor.com').short_url
-    # PUT CODE HERE TO CREATE NEW SHORTENED LINKS
+    id = Link.find_by_link(path).id
+    url + id.to_s
 end
 
 get '/jquery.js' do
