@@ -12,13 +12,4 @@ class CreateLinks < ActiveRecord::Migration
       t.string  :link
     end
   end
-  # def up
-  #   create_table :links do |t|
-  #     t.string  :link
-  #   end
-  # end
-  # def down
-  #   drop_table :links
-  # end
-   # PUT MIGRATION CODE HERE TO SETUP DATABASE
 end

@@ -51,15 +51,20 @@ end
 
 post '/new' do
     path = params[:url]
-    link = Link.new(:link => path)
-    link.save
-    id = Link.find_by_link(path).id.to_s
-    url + id
+    if Link.find_by_link(path)
+      id = Link.find_by_link(path).id.to_s
+      url + id
+    else
+      link = Link.new(:link => path)
+      link.save
+      id = Link.find_by_link(path).id.to_s
+      url + id
+    end
 end
 
 get %r{\/new.+} do
     id = url.sub(/.+\/new/, '')
-    Link.find(id).link.to_s
+    redirect ('http://' + Link.find(id).link.to_s)
 end
 
 get '/jquery.js' do
