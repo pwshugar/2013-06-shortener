@@ -7,5 +7,11 @@
 # be created with a later timestamp.
 
 class CreateLinks < ActiveRecord::Migration
-    # PUT MIGRATION CODE HERE TO SETUP DATABASE
+  def change
+    create_table :links do |t|
+      t.string  :link
+      t.string  :short_url
+    end
+  end
+   # PUT MIGRATION CODE HERE TO SETUP DATABASE
 end

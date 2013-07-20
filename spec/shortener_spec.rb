@@ -25,7 +25,7 @@ describe "URL Shortener" do
     it "can shorten a link" do
       post '/new', :url => 'www.nyt.com' 
       last_response.status == 200
-      last_response.body.should_not be_empty  
+      last_response.body.should_not be_empty
     end
 
     context "for the same link" do
