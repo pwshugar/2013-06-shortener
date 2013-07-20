@@ -53,8 +53,13 @@ post '/new' do
     path = params[:url]
     link = Link.new(:link => path)
     link.save
-    id = Link.find_by_link(path).id
-    url + id.to_s
+    id = Link.find_by_link(path).id.to_s
+    url + id
+end
+
+get %r{\/new.+} do
+    id = url.sub(/.+\/new/, '')
+    Link.find(id).link.to_s
 end
 
 get '/jquery.js' do
